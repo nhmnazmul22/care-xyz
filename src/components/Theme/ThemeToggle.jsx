@@ -1,16 +1,23 @@
 "use client";
 import { motion } from "motion/react";
+import { useTheme } from "next-themes";
 import { FiSun, FiMoon } from "react-icons/fi";
 
 const ThemeToggle = () => {
-  const isDark = false;
+  const { theme, setTheme } = useTheme();
 
+  const handleThemeToggle = () => {
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+  };
+
+  const isDark = theme === "dark";
   return (
     <motion.button
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       className="relative w-10 h-10 rounded-xl bg-muted hover:bg-muted/80 flex items-center justify-center transition-colors"
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+      onClick={handleThemeToggle}
     >
       <motion.div
         initial={false}
