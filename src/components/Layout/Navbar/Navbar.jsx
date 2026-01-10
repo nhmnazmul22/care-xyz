@@ -1,4 +1,3 @@
-import { FiX } from "react-icons/fi";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import ThemeToggle from "../../Theme/ThemeToggle";
@@ -10,7 +9,13 @@ import MobileMenuButtons from "./MobileMenuButtons";
 
 const Navbar = () => {
   return (
-    <MotionContainer>
+    <MotionContainer
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-background/95 backdrop-blur-lg
+        dark:shadow-sm dark:border-b border-border`}
+    >
       <div className="container-custom">
         <div className="flex items-center justify-between h-18">
           <Logo />
@@ -18,13 +23,10 @@ const Navbar = () => {
             <NavLinks />
           </div>
 
-          {/* Auth Buttons + Theme Toggle */}
           <div className="hidden md:flex items-center gap-3">
             <ThemeToggle />
             <Link href="/auth/login">
-              <Button variant="ghost">
-                Sign In
-              </Button>
+              <Button variant="ghost">Sign In</Button>
             </Link>
             <Link href="/auth/register">
               <Button className="btn-primary">Get Started</Button>
