@@ -1,6 +1,6 @@
 import { Geist, Geist_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Layout/Navbar/Navbar";
+import Navbar from "@/components/layout/Navbar/Navbar";
 import { ThemeProvider } from "@/provider/ThemeProvider";
 
 const PlusJakarta = Plus_Jakarta_Sans({

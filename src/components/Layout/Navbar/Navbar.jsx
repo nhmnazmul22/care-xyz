@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import ThemeToggle from "../../Theme/ThemeToggle";
+import ThemeToggle from "../../theme/ThemeToggle";
 import Logo from "@/components/common/Logo/Logo";
 import NavLinks from "./NavLinks";
 import MobileMenu from "./MobileMenu";

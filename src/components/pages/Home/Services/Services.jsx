@@ -1,5 +1,5 @@
 import SectionTitle from "@/components/common/Section/SectionTitle";
-import ServiceCard from "@/components/Service/ServiceCard";
+import ServiceCard from "@/components/service/ServiceCard";
 import { services } from "@/constant";
 import React from "react";
 

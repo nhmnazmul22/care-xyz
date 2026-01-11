@@ -1,6 +1,6 @@
 "use client";
 
-import ThemeToggle from "@/components/Theme/ThemeToggle";
+import ThemeToggle from "@/components/theme/ThemeToggle";
 import useMobileMenu from "@/stores/useMobileMenu";
 import React from "react";
 import { FiX } from "react-icons/fi";
