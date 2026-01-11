@@ -6,13 +6,19 @@ const MotionContainer = ({
   initial = {},
   animate = {},
   transition = {},
-  className,
+  whileInView = {},
+  whileFocus = {},
+  viewport = {},
+  className = "",
 }) => {
   return (
     <motion.div
       initial={initial}
       animate={animate}
       transition={transition}
+      whileInView={whileInView}
+      whileFocus={whileFocus}
+      viewport={viewport}
       className={className}
     >
       {children}
