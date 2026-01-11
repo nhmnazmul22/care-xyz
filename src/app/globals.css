@@ -293,6 +293,7 @@
   .hero-section .text-muted {
     @apply text-white/70;
   }
+
 }
 
 @layer utilities {
@@ -314,3 +315,7 @@
     }
   }
 }
+
+  .bg-gradient-primary {
+    background: var(--gradient-primary);
+  }
