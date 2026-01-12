@@ -1,9 +1,19 @@
-import React from 'react'
+import PageHeader from "@/components/common/Header/PageHeader";
+import FilterSec from "@/components/pages/Services/FilterSec";
+import Services from "@/components/pages/Services/Services";
 
-const ServicePage = () => {
+const ServicesPage = () => {
   return (
-    <div>ServicePage</div>
-  )
-}
+    <>
+      <PageHeader
+        title="Our Services"
+        subTitle="Browse our comprehensive range of professional caregiving services
+            tailored to your needs"
+      />
+      <FilterSec />
+      <Services />
+    </>
+  );
+};
 
-export default ServicePage
+export default ServicesPage;
