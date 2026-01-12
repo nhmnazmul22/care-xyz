@@ -1,4 +1,4 @@
-import { FiClock, FiHeart, FiShield } from "react-icons/fi";
+import { FiAward, FiClock, FiHeart, FiMail, FiMapPin, FiPhone, FiShield, FiUsers } from "react-icons/fi";
 import { FaBaby, FaUserNurse, FaHeartbeat } from "react-icons/fa";
 import {
   divisions,
@@ -11,6 +11,7 @@ export const navLinks = [
   { name: "Home", path: "/" },
   { name: "Services", path: "/services" },
   { name: "About", path: "/about" },
+  { name: "Contact", path: "/contact" },
   { name: "My Bookings", path: "/my-bookings" },
 ];
 
@@ -110,5 +111,124 @@ export const services = [
     color: "secondary",
   },
 ];
+
+export const priceRanges = [
+  { label: "All Prices", value: "all" },
+  { label: "Under $30/hr", value: "under-30" },
+  { label: "$30 - $35/hr", value: "30-35" },
+  { label: "Over $35/hr", value: "over-35" },
+];
+
+export const sortOptions = [
+  { label: "Default", value: "default" },
+  { label: "Price: Low to High", value: "price-asc" },
+  { label: "Price: High to Low", value: "price-desc" },
+  { label: "Name: A-Z", value: "name-asc" },
+  { label: "Name: Z-A", value: "name-desc" },
+];
+
+export const values = [
+  {
+    icon: FiHeart,
+    title: "Compassion First",
+    description:
+      "We believe in treating every family member with the utmost care, dignity, and respect they deserve.",
+  },
+  {
+    icon: FiShield,
+    title: "Trust & Safety",
+    description:
+      "All caregivers undergo rigorous background checks and continuous training to ensure your loved ones are in safe hands.",
+  },
+  {
+    icon: FiUsers,
+    title: "Community Focused",
+    description:
+      "We build lasting relationships between caregivers and families, creating a supportive community of care.",
+  },
+  {
+    icon: FiAward,
+    title: "Excellence",
+    description:
+      "We strive for excellence in every interaction, continuously improving our services based on feedback.",
+  },
+];
+
+export const team = [
+  {
+    name: "Sarah Johnson",
+    role: "Founder & CEO",
+    image:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=300&fit=crop&crop=face",
+    bio: "15+ years in healthcare management",
+  },
+  {
+    name: "Michael Chen",
+    role: "Head of Operations",
+    image:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face",
+    bio: "Former hospital administrator",
+  },
+  {
+    name: "Emily Rodriguez",
+    role: "Care Quality Director",
+    image:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face",
+    bio: "Registered nurse with 10+ years experience",
+  },
+  {
+    name: "David Thompson",
+    role: "Technology Lead",
+    image:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face",
+    bio: "Building accessible healthcare tech",
+  },
+];
+
+export const contactInfo = [
+  {
+    icon: FiMail,
+    title: 'Email Us',
+    detail: 'support@care.xyz',
+    subDetail: "We'll respond within 24 hours",
+  },
+  {
+    icon: FiPhone,
+    title: 'Call Us',
+    detail: '+1 (555) 123-4567',
+    subDetail: 'Mon-Fri, 8am-8pm EST',
+  },
+  {
+    icon: FiMapPin,
+    title: 'Visit Us',
+    detail: '123 Care Street, Suite 100',
+    subDetail: 'New York, NY 10001',
+  },
+  {
+    icon: FiClock,
+    title: 'Business Hours',
+    detail: 'Monday - Friday',
+    subDetail: '8:00 AM - 8:00 PM EST',
+  },
+];
+
+export const faqs = [
+  {
+    question: 'How do I find a caregiver?',
+    answer: 'Browse our services, select the type of care you need, and book a caregiver based on your preferences and location.',
+  },
+  {
+    question: 'Are caregivers background checked?',
+    answer: 'Yes, all caregivers undergo comprehensive background checks, reference verification, and skills assessment.',
+  },
+  {
+    question: 'What if I need to cancel a booking?',
+    answer: 'You can cancel or reschedule bookings up to 24 hours in advance through your account dashboard.',
+  },
+  {
+    question: 'How does payment work?',
+    answer: 'We accept all major credit cards. Payment is processed securely after the care session is completed.',
+  },
+]
 
 export { divisions, districtsByDivision, citiesByDistrict, areasByCity };
