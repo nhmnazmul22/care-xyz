@@ -10,6 +10,7 @@ const Hero = ({ service }) => {
   return (
     <section className="relative pt-32 pb-20 bg-background overflow-hidden">
       <DecorativeBg />
+
       <div className="container-custom relative z-10">
         <MotionContainer
           initial={{ opacity: 0, y: 20 }}
@@ -43,7 +44,7 @@ const Hero = ({ service }) => {
                     Flexible Hours
                   </span>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-coral/10 border border-coral/20">
+                <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-primary bg-transparent">
                   <FiDollarSign className="text-coral" />
                   <span className="text-foreground text-sm">
                     From ${service.pricePerHour}/hr
