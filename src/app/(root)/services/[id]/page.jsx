@@ -178,12 +178,12 @@ const ServiceDetailsPage = () => {
                   </div>
                 </div>
 
-                <Button
-                  className="w-full btn-primary rounded-xl h-14 text-base font-semibold"
-                >
-                  Book This Service
-                  <FiArrowRight className="ml-2" />
-                </Button>
+                <Link href={`/booking/${service._id}`}>
+                  <Button className="w-full btn-primary rounded-xl h-14 text-base font-semibold">
+                    Book This Service
+                    <FiArrowRight className="ml-2" />
+                  </Button>
+                </Link>
 
                 <p className="text-xs text-muted-foreground text-center mt-4">
                   Free cancellation up to 24 hours before
