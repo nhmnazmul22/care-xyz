@@ -25,9 +25,7 @@ export default function RootLayout({ children }) {
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
-          <main className="min-h-[calc(100vh-150px)] h-full">{children}</main>
-          <Footer />
+          {children}
         </ThemeProvider>
         <Toaster />
       </body>
