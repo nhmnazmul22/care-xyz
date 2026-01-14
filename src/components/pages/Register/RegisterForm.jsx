@@ -1,7 +1,9 @@
+"use client";
 import InputBox from "@/components/common/UI/InputBox";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Eye, EyeOff } from "lucide-react";
+import { useState } from "react";
+import { useForm, useWatch } from "react-hook-form";
 import {
   FiMail,
   FiLock,
@@ -13,22 +15,46 @@ import {
   FiX,
 } from "react-icons/fi";
 
-const RegisterForm = () => {
-  const passwordRules = [
-    { label: "At least 6 characters", test: (p) => p.length >= 6 },
-    { label: "One uppercase letter", test: (p) => /[A-Z]/.test(p) },
-    { label: "One lowercase letter", test: (p) => /[a-z]/.test(p) },
-  ];
+const passwordRules = [
+  { label: "At least 6 characters", test: (p) => p.length >= 6 },
+  { label: "One uppercase letter", test: (p) => /[A-Z]/.test(p) },
+  { label: "One lowercase letter", test: (p) => /[a-z]/.test(p) },
+];
 
+const RegisterForm = () => {
+  const [isShowPassword, setIsShowPassword] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { isSubmitting, errors },
+  } = useForm();
+
+  const passwordValue = useWatch({
+    control,
+    name: "password",
+    defaultValue: "",
+  });
+
+  const handleRegistration = (data) => {
+    console.log(data);
+  };
+
+  console.log("error", errors);
   return (
-    <form className="space-y-5">
+    <form onSubmit={handleSubmit(handleRegistration)} className="space-y-5">
       <InputBox
         label="NID Number"
         Icon={FiCreditCard}
         type="text"
         name="nid"
         placeholder="Enter your NID number"
-        error={null}
+        error={errors.nid ? errors.nid.message : null}
+        {...register("nid", {
+          required: true,
+          minLength: { value: 10, message: "NID must be at least 10 digits" },
+          maxLength: { value: 16, message: "NID cannot exceed 16 digits" },
+        })}
       />
 
       <InputBox
@@ -37,16 +63,10 @@ const RegisterForm = () => {
         type="text"
         name="fullName"
         placeholder="Enter your full name"
-        error={null}
-      />
-
-      <InputBox
-        label="Email Address"
-        Icon={FiUser}
-        type="email"
-        name="email"
-        placeholder="you@example.com"
-        error={null}
+        error={errors.fullName ? errors.fullName.message : null}
+        {...register("fullName", {
+          required: "Full name is required",
+        })}
       />
 
       <InputBox
@@ -55,43 +75,87 @@ const RegisterForm = () => {
         type="tel"
         name="phone"
         placeholder="+880 1234 567890"
-        error={null}
+        error={errors.phone ? errors.phone.message : null}
+        {...register("phone")}
       />
 
       <InputBox
-        label="Password"
-        Icon={FiLock}
-        type="password"
-        name="password"
-        placeholder="Create a password"
-        error={null}
+        label="Email Address"
+        Icon={FiMail}
+        type="email"
+        name="email"
+        placeholder="you@example.com"
+        error={errors.email ? errors.email.message : null}
+        {...register("email", { required: "Email is required" })}
       />
-      <div className="mt-3 space-y-1.5">
-          {passwordRules.map((rule) => {
-            const passed = rule.test("abeceadfsa44");
-            return (
-              <div
-                key={rule.label}
-                className={`flex items-center gap-2 text-sm ${
-                  passed ? "text-emerald-600" : "text-red-600"
-                }`}
-              >
-                {passed ? (
-                  <FiCheck className="w-4 h-4" />
-                ) : (
-                  <FiX className="w-4 h-4" />
-                )}
-                {rule.label}
-              </div>
-            );
+
+      <div className="relative!">
+        <InputBox
+          label="Password"
+          Icon={FiLock}
+          type={isShowPassword ? "text" : "password"}
+          name="password"
+          placeholder="*********"
+          error={null}
+          {...register("password", {
+            required: "Password is required",
+            pattern: {
+              value: /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/,
+              message:
+                "At least 6 characters, one uppercase & one lowercase letter",
+            },
           })}
-        </div>
+        />
+        <Button
+          type="button"
+          variant="ghost"
+          size="icon"
+          onClick={() => setIsShowPassword(!isShowPassword)}
+          className="absolute right-2 top-7.5"
+        >
+          {isShowPassword ? (
+            <Eye className="w-4 h-4" />
+          ) : (
+            <EyeOff className="w-4 h-4" />
+          )}
+        </Button>
+      </div>
+      <div className="mt-3 space-y-1.5">
+        {passwordRules.map((rule) => {
+          const passed = rule.test(passwordValue);
+          return (
+            <div
+              key={rule.label}
+              className={`flex items-center gap-2 text-sm ${
+                passed
+                  ? "text-emerald-600"
+                  : errors.password
+                  ? "text-red-600"
+                  : "text-muted-foreground"
+              }`}
+            >
+              {passed ? (
+                <FiCheck className="w-4 h-4" />
+              ) : (
+                <FiX className="w-4 h-4" />
+              )}
+              {rule.label}
+            </div>
+          );
+        })}
+      </div>
 
       <Button
         type="submit"
         className="w-full btn-primary rounded-xl h-14 text-base mt-6"
       >
-        <FiArrowRight className="ml-2" /> Create Account
+        {isSubmitting ? (
+          <span>Creating Account...</span>
+        ) : (
+          <>
+            <FiArrowRight className="ml-2" /> Create Account
+          </>
+        )}
       </Button>
     </form>
   );
