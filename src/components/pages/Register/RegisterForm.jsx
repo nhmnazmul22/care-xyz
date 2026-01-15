@@ -1,4 +1,6 @@
 "use client";
+import { registerUser } from "@/actions/server/user";
+import ErrorMessages from "@/components/common/UI/ErrorMessages";
 import InputBox from "@/components/common/UI/InputBox";
 import { Button } from "@/components/ui/button";
 import { Eye, EyeOff } from "lucide-react";
@@ -14,6 +16,7 @@ import {
   FiCheck,
   FiX,
 } from "react-icons/fi";
+import { toast } from "sonner";
 
 const passwordRules = [
   { label: "At least 6 characters", test: (p) => p.length >= 6 },
@@ -36,11 +39,20 @@ const RegisterForm = () => {
     defaultValue: "",
   });
 
-  const handleRegistration = (data) => {
-    console.log(data);
+  const handleRegistration = async (data) => {
+    const result = await registerUser(data);
+    if (!result.success) {
+      toast.error(result.message, {
+        description: <ErrorMessages errors={result.errors} />,
+      });
+      return;
+    }
+
+    toast.success(result.message);
+
+    return;
   };
 
-  console.log("error", errors);
   return (
     <form onSubmit={handleSubmit(handleRegistration)} className="space-y-5">
       <InputBox

@@ -1,8 +1,6 @@
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/layout/Navbar/Navbar";
 import { ThemeProvider } from "@/provider/ThemeProvider";
-import Footer from "@/components/layout/Footer/Footer";
 import { Toaster } from "sonner";
 
 const PlusJakarta = Plus_Jakarta_Sans({
@@ -27,7 +25,7 @@ export default function RootLayout({ children }) {
         >
           {children}
         </ThemeProvider>
-        <Toaster />
+        <Toaster richColors position="bottom-right" />
       </body>
     </html>
   );
