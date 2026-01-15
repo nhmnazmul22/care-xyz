@@ -3,6 +3,7 @@
 import { collections } from "@/config/db";
 import { RegisterRequestDTO } from "@/DTO";
 import { RequestValidation } from "@/lib/requestValidation";
+import { nowDate } from "@/lib/utils";
 import bcrypt from "bcrypt";
 
 export const registerUser = async (userInfo) => {
@@ -12,39 +13,48 @@ export const registerUser = async (userInfo) => {
     if (isError) {
       return {
         success: false,
-        message: errors,
+        message: "Validation failed",
+        errors: errors,
       };
     }
 
     // check user exist or not
     const usersColl = await collections.USERS();
-    const existUser = usersColl.findOne({ email: userInfo.email });
+    const existUser = await usersColl.findOne({ email: userInfo.email });
+
     if (existUser) {
       return {
         success: false,
         message: "User already exist",
+        errors: {
+          email: "This email is already registered",
+        },
       };
     }
 
     // hashed the password
     const hashedPassword = await bcrypt.hash(userInfo.password, 10);
-    // create user payload
-    const userData = {
-      ...userInfo,
-      password: hashedPassword,
-    };
 
     // save user in database
-    const result = await usersColl.insertOne(userData);
+    const result = await usersColl.insertOne({
+      ...userInfo,
+      password: hashedPassword,
+      createdAt: nowDate(),
+      updatedAt: nowDate(),
+    });
+
     return {
       success: true,
       message: "User registration successful",
-      data: result,
+      data: { ...result, insertedId: result?.insertedId.toString() },
     };
   } catch (err) {
     return {
       success: false,
-      message: err?.message || "Registration failed",
+      message: "Registration failed",
+      errors: {
+        _global: err?.message || "Unexpected server error",
+      },
     };
   }
 };
