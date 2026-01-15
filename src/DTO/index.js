@@ -5,3 +5,8 @@ export const RegisterRequestDTO = {
   email: { require: true, message: "Email is required" },
   password: { require: true, message: "Password is required" },
 };
+
+export const LoginRequestDTO = {
+  email: { require: true, message: "Email is required" },
+  password: { require: true, message: "Password is required" },
+};
