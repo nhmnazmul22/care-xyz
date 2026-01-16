@@ -1,3 +1,4 @@
+import { loginUser } from "@/actions/server/user";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 const authOptions = {
@@ -14,7 +15,9 @@ const authOptions = {
         });
 
         if (!result.success) {
-          return null;
+          throw new Error(
+            JSON.stringify({ message: result.message, errors: result.errors })
+          );
         }
 
         return result.data;

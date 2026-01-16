@@ -1,5 +1,6 @@
 "use client";
 import { registerUser } from "@/actions/server/user";
+import PasswordShowButton from "@/components/common/Buttons/PasswordShowButton";
 import ErrorMessages from "@/components/common/UI/ErrorMessages";
 import InputBox from "@/components/common/UI/InputBox";
 import { Button } from "@/components/ui/button";
@@ -118,19 +119,10 @@ const RegisterForm = () => {
             },
           })}
         />
-        <Button
-          type="button"
-          variant="ghost"
-          size="icon"
-          onClick={() => setIsShowPassword(!isShowPassword)}
-          className="absolute right-2 top-7.5"
-        >
-          {isShowPassword ? (
-            <Eye className="w-4 h-4" />
-          ) : (
-            <EyeOff className="w-4 h-4" />
-          )}
-        </Button>
+        <PasswordShowButton
+          isShowPassword={isShowPassword}
+          setIsShowPassword={setIsShowPassword}
+        />
       </div>
       <div className="mt-3 space-y-1.5">
         {passwordRules.map((rule) => {

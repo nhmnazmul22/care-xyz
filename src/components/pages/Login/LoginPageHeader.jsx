@@ -2,7 +2,7 @@ import Logo from "@/components/common/Logo/Logo";
 import MotionContainer from "@/components/common/motion/MotionContainer";
 import React from "react";
 
-const RegisterHeader = () => {
+const LoginPageHeader = () => {
   return (
     <MotionContainer
       initial={{ opacity: 0, y: 20 }}
@@ -13,14 +13,12 @@ const RegisterHeader = () => {
       <div className="mx-auto w-fit mb-3">
         <Logo />
       </div>
-      <h1 className="text-3xl font-bold text-foreground mb-2">
-        Create Account
-      </h1>
+      <h1 className="text-3xl font-bold text-foreground mb-2">Welcome Back</h1>
       <p className="text-muted-foreground">
-        Join thousands of families trusting Care.xyz
+        Sign in to manage your bookings and find caregivers
       </p>
     </MotionContainer>
   );
 };
 
-export default RegisterHeader;
+export default LoginPageHeader;

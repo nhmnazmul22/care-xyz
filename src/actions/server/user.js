@@ -59,7 +59,7 @@ export const registerUser = async (userInfo) => {
   }
 };
 
-export const loginUser = async (email, password) => {
+export const loginUser = async ({ email, password }) => {
   try {
     // Validate the properties
     const { isError, errors } = RequestValidation(
@@ -76,7 +76,8 @@ export const loginUser = async (email, password) => {
 
     // Check user exist or not
     const usersColl = await collections.USERS();
-    const existUser = await usersColl.findOne({ email: userInfo.email });
+    const existUser = await usersColl.findOne({ email: email });
+    console.log(email);
     if (!existUser) {
       return {
         success: false,
@@ -89,7 +90,10 @@ export const loginUser = async (email, password) => {
 
     // Check password correct or not
 
-    const isPasswordCorrect = await bcrypt.compare(email, existUser.password);
+    const isPasswordCorrect = await bcrypt.compare(
+      password,
+      existUser.password
+    );
     if (!isPasswordCorrect) {
       return {
         success: false,
@@ -99,7 +103,6 @@ export const loginUser = async (email, password) => {
         },
       };
     }
-
 
     // return the auth user
     return {
