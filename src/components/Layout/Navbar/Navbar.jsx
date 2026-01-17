@@ -1,11 +1,10 @@
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import ThemeToggle from "../../theme/ThemeToggle";
 import Logo from "@/components/common/Logo/Logo";
 import NavLinks from "./NavLinks";
 import MobileMenu from "./MobileMenu";
 import MotionContainer from "@/components/common/motion/MotionContainer";
 import MobileMenuButtons from "./MobileMenuButtons";
+import AuthButtons from "./AuthButtons";
 
 const Navbar = () => {
   return (
@@ -25,12 +24,7 @@ const Navbar = () => {
 
           <div className="hidden md:flex items-center gap-3">
             <ThemeToggle />
-            <Link href="/auth/login">
-              <Button variant="ghost">Sign In</Button>
-            </Link>
-            <Link href="/auth/register">
-              <Button className="btn-primary">Get Started</Button>
-            </Link>
+            <AuthButtons />
           </div>
 
           <MobileMenuButtons />
