@@ -5,7 +5,7 @@ const authOptions = {
     providers: [
         CredentialsProvider({
             name: "Credentials",
-            async authorize(credentials, req) {
+            async authorize(credentials, _req) {
                 if (!credentials.email || !credentials.password) {
                     return null;
                 }

@@ -38,10 +38,7 @@ const RegisterForm = () => {
             });
             return;
         }
-
-        toast.success(result.message);
-
-        return;
+        return toast.success(result.message);
     };
 
     return (
