@@ -26,7 +26,7 @@ const ServiceCard = ({ service, index }) => {
         <div className="absolute inset-0 bg-linear-to-t from-background/80 to-transparent" />
         <div className="absolute top-4 left-4">
           <div className="w-12 h-12 rounded-xl bg-primary flex items-center justify-center">
-            <Icon.icon className="w-6 h-6 text-primary-foreground" />
+            {Icon && <Icon.icon className="w-6 h-6 text-primary-foreground" />}
           </div>
         </div>
       </div>
