@@ -1,5 +1,6 @@
 import DecorativeBg from "@/components/common/Header/DecorativeBg";
 import MotionContainer from "@/components/common/motion/MotionContainer";
+import { ICON_CATALOG } from "@/constant/serviceIcons";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -7,6 +8,8 @@ import { FiArrowLeft, FiClock, FiDollarSign } from "react-icons/fi";
 import { GiDoctorFace } from "react-icons/gi";
 
 const Hero = ({ service }) => {
+  const Icon = ICON_CATALOG[service.iconKey];
+
   return (
     <section className="relative pt-32 pb-20 bg-background overflow-hidden">
       <DecorativeBg />
@@ -28,7 +31,7 @@ const Hero = ({ service }) => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center mb-6">
-                <GiDoctorFace className="w-8 h-8 text-primary-foreground" />
+                <Icon.icon className="w-8 h-8 text-primary-foreground" />
               </div>
               <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
                 {service.title}
