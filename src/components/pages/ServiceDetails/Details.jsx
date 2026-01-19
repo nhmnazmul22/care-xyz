@@ -19,7 +19,7 @@ const Details = ({ service }) => {
               {"What's Included"}
             </h2>
             <div className="grid sm:grid-cols-2 gap-4">
-              {service.features.map((feature, index) => (
+              {service?.features.map((feature, index) => (
                 <MotionContainer
                   key={feature}
                   initial={{ opacity: 0, x: -20 }}
