@@ -34,8 +34,8 @@ const BookingPage = async ({ params }) => {
               Back to Service Details
             </Link>
             <div className="grid lg:grid-cols-3 gap-12">
-              <BookingForm />
-              <PriceSummary />
+              <BookingForm service={service} />
+              <PriceSummary service={service} />
             </div>
           </MotionContainer>
         </div>

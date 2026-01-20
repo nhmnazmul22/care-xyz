@@ -1,8 +1,16 @@
+"use client";
+import useBookingStore from "@/stores/useBookingStore";
 import Image from "next/image";
 import React from "react";
 import { FiDollarSign } from "react-icons/fi";
 
 const PriceSummary = ({ service }) => {
+  const { durationType, duration } = useBookingStore();
+
+  const pricePerUnit =
+    durationType === "hours" ? service.pricePerHour : service.pricePerDay;
+  const totalCost = pricePerUnit * duration;
+
   return (
     <div>
       <div className="sticky top-28 p-6 rounded-2xl bg-card border border-border shadow-lg">
