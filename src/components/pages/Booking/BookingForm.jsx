@@ -13,7 +13,7 @@ const steps = [
 ];
 
 const BookingForm = ({ service }) => {
-  const { step} = useBookingStore();
+  const { step } = useBookingStore();
 
   return (
     <div className="lg:col-span-2">

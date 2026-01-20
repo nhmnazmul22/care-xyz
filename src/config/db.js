@@ -25,4 +25,5 @@ export const connectDB = async () => {
 export const collections = {
   SERVICES: async () => (await connectDB()).collection("services"),
   USERS: async () => (await connectDB()).collection("users"),
+  BOOKINGS: async () => (await connectDB()).collection("bookings"),
 };

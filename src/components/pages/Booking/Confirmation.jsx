@@ -1,18 +1,16 @@
-"use client";
+import { bookService } from "@/actions/server/booking.action";
 import MotionContainer from "@/components/common/motion/MotionContainer";
+import ErrorMessages from "@/components/common/UI/ErrorMessages";
 import { Button } from "@/components/ui/button";
 import { ICON_CATALOG } from "@/constant/serviceIcons";
 import useBookingStore from "@/stores/useBookingStore";
-import { useSession } from "next-auth/react";
 import React from "react";
 import { FiMapPin } from "react-icons/fi";
+import { toast } from "sonner";
 import Swal from "sweetalert2";
 
 const Confirmation = ({ service }) => {
   const { setStep, duration, durationType, bookingAddress } = useBookingStore();
-  const {
-    data: { user },
-  } = useSession();
 
   const pricePerUnit =
     durationType === "hours" ? service.pricePerHour : service.pricePerDay;
@@ -21,17 +19,10 @@ const Confirmation = ({ service }) => {
   const handleConfirmBooking = async () => {
     const payload = {
       serviceId: service._id,
-      serviceTitle: service.title,
-      serviceImage: service.image,
       bookingAddress,
       duration,
       durationType,
-      customerInfo: {
-        fullName: user.name,
-        email: user.email,
-      },
     };
-
     const result = await Swal.fire({
       title: "Confirm Booking",
       html: `
@@ -49,6 +40,17 @@ const Confirmation = ({ service }) => {
       confirmButtonColor: "#2a9d8f",
       cancelButtonColor: "#6b7280",
     });
+
+    if (result.isConfirmed) {
+      const data = await bookService(payload);
+      if (!data.success) {
+        toast.error(result.message, {
+          description: data.errors && <ErrorMessages errors={result.errors} />,
+        });
+        return;
+      }
+      return toast.success(result.message);
+    }
   };
 
   const Icon = ICON_CATALOG[service.iconKey];
