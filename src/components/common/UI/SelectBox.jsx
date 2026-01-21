@@ -31,6 +31,12 @@ const SelectBox = ({
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
         <SelectContent className="border-slate-300 dark:border-neutral-900">
+            {options.length === 0 && (
+                <SelectItem>
+                    {triggerLabel} not found!
+                </SelectItem>
+            )}
+
           {options.map((o) => (
             <SelectItem key={o} value={o}>
               {o}
