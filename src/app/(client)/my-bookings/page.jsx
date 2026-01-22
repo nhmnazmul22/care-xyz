@@ -9,7 +9,6 @@ import {getBookings} from "@/actions/server/booking.action.js";
 const MyBookingPage = async () => {
     const {data: bookings} = await getBookings()
 
-    console.log(bookings);
     return (
         <div>
             <section className="pt-32 pb-20">
