@@ -6,6 +6,7 @@ import {RequestValidation} from "@/lib/requestValidation";
 import {nowDate} from "@/lib/utils";
 import {getServerSession} from "next-auth";
 import {sendEmail} from "@/lib/sendEmail.js";
+import {ObjectId} from "mongodb";
 
 export const bookService = async (payload) => {
     try {
@@ -122,6 +123,50 @@ export const getBookings = async () => {
         return {
             success: false,
             message: "Bookings retrieved failed",
+            errors: {
+                _global: err?.message || "Unexpected server error",
+            },
+        };
+    }
+}
+
+export const cancelBooking = async (bookingId) => {
+    try {
+        const {user} = await getServerSession();
+
+        if (!user) {
+            return {
+                success: false,
+                message: "Forbidden",
+                errors: {
+                    unauthorized: "You are not allowed for this operation"
+                },
+            }
+        }
+
+        const bookingsColl = await collections.BOOKINGS();
+        const booking = await bookingsColl.findOne({_id: new ObjectId(bookingId)});
+
+        if (!booking) {
+            return {
+                success: false,
+                message: "Booking not found",
+                errors: {
+                    booking: "Booking not found for cancel booking"
+                },
+            }
+        }
+
+        const result = await bookingsColl.deleteOne({_id: new ObjectId(bookingId)});
+        return {
+            success: true,
+            message: "Booking cancel successful",
+            data: result,
+        };
+    } catch (err) {
+        return {
+            success: false,
+            message: "Bookings cancel failed",
             errors: {
                 _global: err?.message || "Unexpected server error",
             },

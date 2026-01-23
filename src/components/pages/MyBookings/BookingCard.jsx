@@ -8,6 +8,8 @@ import Image from "next/image";
 import {toast} from "sonner";
 import Swal from "sweetalert2";
 import BookingDetailsModal from "@/components/pages/MyBookings/BookingDetailsModal.jsx";
+import {cancelBooking} from "@/actions/server/booking.action.js";
+import ErrorMessages from "@/components/common/UI/ErrorMessages.jsx";
 
 const BookingCard = ({booking, index,}) => {
 
@@ -24,7 +26,15 @@ const BookingCard = ({booking, index,}) => {
         });
 
         if (result.isConfirmed) {
-            toast.success("Booking cancelled successfully");
+            const result = await cancelBooking(bookingId);
+            if (!result.success) {
+                toast.error(result.message, {
+                    description: <ErrorMessages errors={result.errors}/>,
+                });
+                return;
+            }
+
+            return toast.success(result.message || "Booking cancelled successfully");
         }
     };
 
