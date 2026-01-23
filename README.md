@@ -1,38 +1,100 @@
-# CareConnect - Caregiving Services Platform
+# Care.xyz - Baby Sitting & Elderly Care Service Platform
 
-A modern web application for booking professional caregiving services for babies, elderly, and those recovering from
-illness.
+<div align="center">
+  <img src="https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js" />
+  <img src="https://img.shields.io/badge/React-18.3.1-61DAFB?style=for-the-badge&logo=react&logoColor=white" alt="React" />
+  <img src="https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=for-the-badge&logo=javascript&logoColor=000000" alt="JavaScript" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
+</div>
 
-## Features
 
-- 🏠 **Service Booking** - Browse and book caregiving services
-- 👶 **Baby Care** - Professional childcare services
+<br />
+
+<div align="center">
+  <h3>🏠 Reliable & Trusted Care Services for Your Loved Ones</h3>
+  <p>A modern web application that connects families with verified caregivers for children, elderly, and those recovering from illness.</p>
+</div>
+
+---
+
+## 📋 Table of Contents
+
+- [Overview](#overview)
+- [Key Features](#key-features)
+- [Pages & Routes](#pages--routes)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+- [Project Structure](#project-structure)
+- [Environment Variables](#environment-variables)
+- [Deployment](#deployment)
+- [Links](#links)
+
+---
+
+## 🎯 Overview
+
+**Care.xyz** is a comprehensive web application that helps users book reliable and trusted care services for children,
+elderly, or sick family members. Users can easily book services based on their required duration and location.
+
+### Mission
+
+To make caregiving **easy**, **secure**, and **accessible** for everyone.
+
+### What We Offer
+
+- 👶 **Baby Care** - Professional childcare and babysitting services
 - 👴 **Elderly Care** - Compassionate care for seniors
-- 🏥 **Recovery Care** - Support for those recovering from illness
-- 📅 **My Bookings** - View and manage your appointments
-- 🌓 **Dark/Light Mode** - Theme toggle for user preference
-- 📱 **Responsive Design** - Works on all devices
+- 🏥 **Sick People Care** - Support for those recovering from illness
 
-## Tech Stack
+---
 
-- **React 18** - UI library
-- **TypeScript** - Type safety
-- **Vite** - Build tool
-- **Tailwind CSS** - Styling
-- **shadcn/ui** - UI components
-- **Framer Motion** - Animations
-- **React Router** - Navigation
-- **Zustand** - State management
-- **React Hook Form + Zod** - Form handling & validation
+## ✨ Key Features
 
-## Getting Started
+### Core Functionality
 
-```sh
+| Feature                      | Description                                                   |
+|------------------------------|---------------------------------------------------------------|
+| 📱 **Responsive Design**     | Fully optimized for mobile, tablet, and desktop devices       |
+| 🔐 **User Authentication**   | Email/Password login with Google Social Login support         |
+| 📅 **Dynamic Booking**       | Select duration (hours/days), location hierarchy, and address |
+| 💰 **Auto Cost Calculation** | Real-time total cost based on duration × service charge       |
+| 📊 **Booking Status**        | Track status: Pending → Confirmed → Completed / Cancelled     |
+| 🌓 **Theme Toggle**          | Light and dark mode support                                   |
+
+### User Experience
+
+- ✅ Multi-step booking wizard with progress indicators
+- ✅ Location selection: Division → District → City → Area
+- ✅ Form validation with real-time feedback
+- ✅ Smooth animations powered by Framer Motion
+- ✅ Toast notifications for user actions
+
+---
+
+### Authentication Flow
+
+- New users register with: NID, Name, Email, Contact, Password
+- Password requirements: 6+ characters, 1 uppercase, 1 lowercase
+- Logged-in users are redirected appropriately (not back to log in)
+- Private routes protected for authenticated users only
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- npm or yarn or bun
+
+### Installation
+
+```bash
 # Clone the repository
-git clone <YOUR_GIT_URL>
+git clone https://github.com/nhmnazmul22/care-xyz
 
 # Navigate to project directory
-cd <YOUR_PROJECT_NAME>
+cd care-xyz
 
 # Install dependencies
 npm install
@@ -41,20 +103,48 @@ npm install
 npm run dev
 ```
 
-## Project Structure
+The application will be available at `http://localhost:3000`
 
-```
-src/
-├── components/
-│   ├── common/      # Reusable components
-│   ├── layout/      # Navbar, Footer
-│   └── ui/          # shadcn/ui components
-├── data/            # Static data (services, locations)
-├── hooks/           # Custom React hooks
-├── pages/           # Route pages
-│   └── auth/        # Authentication pages
-├── store/           # Zustand state management
-└── lib/             # Utilities
+### Build for Production
+
+```bash
+# Create production build
+npm run build
+
+# Preview production build
+npm run start
 ```
 
+---
 
+## 🔐 Environment Variables
+
+Create a `.env` file in the root directory:
+
+```env
+DATABASE_URL=
+DATABASE_NAME=
+NEXTAUTH_URL=
+NEXTAUTH_SECRET=
+SMTP_HOST=
+SMTP_PORT=
+SMTP_USER=
+SMTP_PASS=
+```
+
+> ⚠️ **Note**: Never commit sensitive API keys to version control. Use environment variables for all configuration.
+
+---
+
+## 🔗 Links
+
+| Resource           | URL                                     |
+|--------------------|-----------------------------------------|
+| 🌐 **Live Demo**   | https://care-xyz-silk.vercel.app/       |
+| 📦 **GitHub Repo** | https://github.com/nhmnazmul22/care-xyz |
+
+---
+
+<div align="center">
+  <p>© 2025 Care.xyz. All rights reserved.</p>
+</div>
