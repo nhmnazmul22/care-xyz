@@ -1,5 +1,6 @@
 import React from "react";
 
-export const PaymentHistories = () => {
-  return <div>PaymentHistories</div>;
+const PaymentHistories = () => {
+    return <div>PaymentHistories</div>;
 };
+export default PaymentHistories
