@@ -10,7 +10,6 @@ import Link from "next/link";
 import {useRouter, useSearchParams} from "next/navigation";
 import React, {useState} from "react";
 import {useForm} from "react-hook-form";
-import {FcGoogle} from "react-icons/fc";
 import {FiArrowRight, FiLock, FiMail} from "react-icons/fi";
 import {toast} from "sonner";
 

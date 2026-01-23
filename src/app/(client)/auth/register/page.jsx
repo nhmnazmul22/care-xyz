@@ -1,5 +1,3 @@
-import {FcGoogle} from "react-icons/fc";
-import {Button} from "@/components/ui/button";
 import Link from "next/link";
 import RegisterHeader from "@/components/pages/Register/RegisterHeader";
 import MotionContainer from "@/components/common/motion/MotionContainer";
