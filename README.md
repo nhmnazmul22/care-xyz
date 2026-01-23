@@ -17,20 +17,6 @@
 
 ---
 
-## 📋 Table of Contents
-
-- [Overview](#overview)
-- [Key Features](#key-features)
-- [Pages & Routes](#pages--routes)
-- [Tech Stack](#tech-stack)
-- [Getting Started](#getting-started)
-- [Project Structure](#project-structure)
-- [Environment Variables](#environment-variables)
-- [Deployment](#deployment)
-- [Links](#links)
-
----
-
 ## 🎯 Overview
 
 **Care.xyz** is a comprehensive web application that helps users book reliable and trusted care services for children,
