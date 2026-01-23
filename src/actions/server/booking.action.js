@@ -7,6 +7,8 @@ import {nowDate} from "@/lib/utils";
 import {getServerSession} from "next-auth";
 import {sendEmail} from "@/lib/sendEmail.js";
 import {ObjectId} from "mongodb";
+import {refresh} from 'next/cache'
+
 
 export const bookService = async (payload) => {
     try {
@@ -158,6 +160,8 @@ export const cancelBooking = async (bookingId) => {
         }
 
         const result = await bookingsColl.deleteOne({_id: new ObjectId(bookingId)});
+
+        refresh()
         return {
             success: true,
             message: "Booking cancel successful",
