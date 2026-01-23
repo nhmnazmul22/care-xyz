@@ -62,9 +62,6 @@ const AuthButtons = () => {
                     My Account
                 </DropdownMenuLabel>
                 <DropdownMenuGroup>
-                    <Link href="/profile">
-                        <DropdownMenuItem>Profile</DropdownMenuItem>
-                    </Link>
                     <Link href="/my-bookings">
                         <DropdownMenuItem>My Booking</DropdownMenuItem>
                     </Link>
