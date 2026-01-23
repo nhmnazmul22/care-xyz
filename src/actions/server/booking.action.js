@@ -5,6 +5,7 @@ import {bookServiceDTO} from "@/DTO";
 import {RequestValidation} from "@/lib/requestValidation";
 import {nowDate} from "@/lib/utils";
 import {getServerSession} from "next-auth";
+import {sendEmail} from "@/lib/sendEmail.js";
 
 export const bookService = async (payload) => {
     try {
@@ -58,6 +59,24 @@ export const bookService = async (payload) => {
 
         const bookingsColl = await collections.BOOKINGS();
         const result = await bookingsColl.insertOne(bookingInfo);
+
+
+        if (result.insertedId) {
+            await sendEmail({
+                to: bookingInfo.customerEmail,
+                subject: "Booking Confirmation",
+                html: `
+                    <h2>Booking Confirmed 🎉</h2>
+                    <p>Your service <strong>${bookingInfo.serviceName}</strong> has been booked successfully.</p>
+                    <ul>
+                      <li><strong>Duration:</strong> ${bookingInfo.duration} ${bookingInfo.durationType}</li>
+                      <li><strong>Total Price:</strong> $${bookingInfo.totalPrice}</li>
+                      <li><strong>Status:</strong> ${bookingInfo.status}</li>
+                    </ul>
+                    <p>Thank you for choosing our service.</p>
+                  `,
+            });
+        }
 
         return {
             success: true,
