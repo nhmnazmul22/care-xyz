@@ -1,6 +1,7 @@
 # CareConnect - Caregiving Services Platform
 
-A modern web application for booking professional caregiving services for babies, elderly, and those recovering from illness.
+A modern web application for booking professional caregiving services for babies, elderly, and those recovering from
+illness.
 
 ## Features
 
@@ -56,10 +57,4 @@ src/
 └── lib/             # Utilities
 ```
 
-## Deployment
 
-Deploy via [Lovable](https://lovable.dev) by clicking Share → Publish.
-
-## License
-
-MIT
